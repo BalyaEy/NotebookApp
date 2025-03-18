@@ -1,9 +1,6 @@
 package org.example.notebook;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +38,20 @@ public class NotebookService {
         }
     }
 
+    public void addNote(String note){
+        notes.add(note);
+        try(FileWriter writer = new FileWriter(file,true)) {
+            writer.write(note + "/n");
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void listNotes(){
+        for(String note : notes){
+            System.out.println(note);
+        }
+    }
 
 
 }
