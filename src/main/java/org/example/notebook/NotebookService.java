@@ -27,6 +27,7 @@ public class NotebookService {
     }
 
     public void loadNotes(){
+        notes.clear();
         try (BufferedReader reader = new BufferedReader(new FileReader("Notes.txt")) ) {
             String line;
             while ((line = reader.readLine()) !=null) {
@@ -41,7 +42,7 @@ public class NotebookService {
     public void addNote(String note){
         notes.add(note);
         try(FileWriter writer = new FileWriter(file,true)) {
-            writer.write(note + "/n");
+            writer.write(note + "\n");
         } catch (IOException e){
             e.printStackTrace();
         }
